@@ -1,0 +1,13 @@
+.gallery {
+    margin-top: 51px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 17px;
+}
+
+@media (max-width: 879px) {
+    .gallery {
+        grid-template-columns: auto;
+        margin-top: 36px;
+    }
+}

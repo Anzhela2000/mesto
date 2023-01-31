@@ -1,0 +1,22 @@
+.gallery__like {
+    margin-right: 19px;
+    background-image: url(../../../images/like.svg);
+    width: 22px;
+    height: 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-self: center;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.gallery__like:hover {
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.gallery__like:focus {
+    background-image: url(../../../images/Union.svg);
+    opacity: 1;
+}
