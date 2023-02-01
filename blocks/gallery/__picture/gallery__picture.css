@@ -1,5 +1,5 @@
 .gallery__picture {
-    width: 282px;
-    height: 282px;
+    max-width: 276.3px;
+    max-height: 282px;
     border-radius: 10px 10px 0px 0px;
 }
