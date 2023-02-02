@@ -7,7 +7,6 @@
     display: block;
 }
 
-
 @media (max-width: 879px) {
     .profile__avatar {
         align-self: center;
