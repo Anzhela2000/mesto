@@ -1,6 +1,8 @@
-.gallery__like {
+.gallery__button-like {
     margin-right: 19px;
     background-image: url(../../../images/like.svg);
+    background-color: rgba(0, 0, 0, 0);
+    object-fit: cover;
     width: 22px;
     height: 19px;
     background-position: center;
@@ -11,12 +13,6 @@
     cursor: pointer;
 }
 
-.gallery__like:hover {
+.gallery__button-like:hover {
     opacity: 0.5;
-    transition: 0.5s;
-}
-
-.gallery__like:focus {
-    background-image: url(../../../images/Union.svg);
-    opacity: 1;
 }

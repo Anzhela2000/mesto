@@ -4,12 +4,10 @@
     grid-template-columns: 294px 24px;
     column-gap: 16px;
     margin-right: 244px;
-    max-height: 73px;
 }
 
 @media (max-width: 879px) {
     .profile__info {
-        display: grid;
         grid-template-columns: 189px 18px;
         justify-content: center;
         column-gap: 10px;

@@ -1,22 +1,22 @@
-.profile__button {
+.profile__button-change {
     width: 24px;
     height: 24px;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0);
     background-image: url(../../../images/pencil.svg);
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid white;
+    background-size: 10px 10px;
+    border: 1px solid #FFFFFF;;
     align-self: center;
     cursor: pointer;
 }
 
-.profile__button:hover {
+.profile__button-change:hover {
     opacity: 0.6;
-    transition: 0.5s;
 }
 
 @media (max-width: 879px) {
-    .profile__button {
+    .profile__button-change {
         width: 18px;
         height: 18px;
     }
