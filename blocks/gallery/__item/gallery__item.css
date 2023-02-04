@@ -5,7 +5,7 @@
 
 @media (max-width: 879px) {
     .gallery__item {
-        max-width: 282px;
+        width: 282px;
         margin: 0 auto 0;
     }
 }

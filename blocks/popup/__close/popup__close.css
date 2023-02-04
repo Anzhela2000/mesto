@@ -8,10 +8,11 @@
     background-size: 32px 32px;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     border: none;
     object-fit: cover;
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .popup__close:hover {
