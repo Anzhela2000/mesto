@@ -15,13 +15,13 @@
 @import url(../blocks/gallery/__picture/gallery__picture.css);
 @import url(../blocks/gallery/__title/gallery__title.css);
 @import url(../blocks/gallery/__button-like/gallery__button-like.css);
-@import url(../blocks/gallery/__button-like/_black/gallery__button-like_black.css);
+@import url(../blocks/gallery/__button-like/_active/gallery__button-like_active.css);
 @import url(../blocks/gallery/__item/gallery__item.css);
 @import url(../blocks/gallery/__bottom/gallery__bottom.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__window/popup__window.css);
+@import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
