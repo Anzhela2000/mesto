@@ -25,50 +25,18 @@
                 </div>
                 <button class="profile__add-button" type="button"></button>
             </section>
-            <section class="gallery">
+            <ul class="gallery">
+            </ul>
+            <template id="elements">
                 <div class="gallery__item">
-                    <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск" class="gallery__picture">
+                    <button class="gallery__picture_click"><img class="gallery__picture" alt="Изображение"></button>
+                    <button class="gallery__delete"></button>
                     <div class="gallery__bottom">
-                        <h2 class="gallery__title">Карачаевск</h2>
+                        <h2 class="gallery__title"></h2>
                         <button class="gallery__button-like" type="button"></button>
                     </div>
                 </div>
-                <div class="gallery__item">
-                    <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="gallery__picture">
-                    <div class="gallery__bottom">
-                        <h2 class="gallery__title">Гора ЭльбрусГора ЭльбрусГора Эльбрус</h2>
-                        <button class="gallery__button-like" type="button"></button>
-                    </div>
-                </div>
-                <div class="gallery__item">
-                    <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="gallery__picture">
-                    <div class="gallery__bottom">
-                        <h2 class="gallery__title">Домбай</h2>
-                        <button class="gallery__button-like" type="button"></button>
-                    </div>
-                </div>
-                <div class="gallery__item">
-                    <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск" class="gallery__picture">
-                    <div class="gallery__bottom">
-                        <h2 class="gallery__title">Карачаевск</h2>
-                        <button class="gallery__button-like" type="button"></button>
-                    </div>
-                </div>
-                <div class="gallery__item">
-                    <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="gallery__picture">
-                    <div class="gallery__bottom">
-                        <h2 class="gallery__title">Гора Эльбрус</h2>
-                        <button class="gallery__button-like" type="button"></button>
-                    </div>
-                </div>
-                <div class="gallery__item">
-                    <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="gallery__picture">
-                    <div class="gallery__bottom">
-                        <h2 class="gallery__title">Домбай</h2>
-                        <button class="gallery__button-like" type="button"></button>
-                    </div>
-                </div>
-            </section>
+            </template>
         </main>
         <footer class="footer">
             <p class="footer__title" lang="en">© 2020 Mesto Russia</p>
@@ -85,6 +53,25 @@
                     name="job" value="Исследователь океана">
                 <button class="popup__button" type="submit">Сохранить</button>
             </form>
+        </div>
+    </div>
+    <div class="popup popup__place">
+        <div class="popup__container">
+            <button class="popup__close popup__close_place" type="button"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__form_place" name="changePlaceInfo">
+                <input type="text" class="popup__input popup__input_type_place" placeholder="Название" name="place">
+                <input type="url" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку"
+                    name="Ссылка">
+                <button class="popup__button_place" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup__gallery">
+        <div class="popup__container popup__container_gallery">
+            <button class="popup__close popup__close_gallery" type="button"></button>
+            <img src="#" alt="Изображение" class="popup__image">
+            <h3 class="popup__text"></h3>
         </div>
     </div>
     <script src="./scripts/index.js"></script>
