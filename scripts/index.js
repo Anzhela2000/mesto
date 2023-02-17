@@ -64,7 +64,7 @@ const template = document.querySelector("#elements");
 const formCardAdd = document.querySelector('.popup__form_place');
 const popupInputTypePlace = document.querySelector('.popup__input_type_place');
 const popupInputTypeLink = document.querySelector('.popup__input_type_link');
-const popupGallery = document.querySelector('.popup__gallery');
+const popupGallery = document.querySelector('.popup_gallery');
 const popupImage = document.querySelector('.popup__image');
 const popupText = document.querySelector('.popup__text');
 const buttonClosePopup = document.querySelector('.popup__close_gallery')
@@ -121,7 +121,7 @@ formCardAdd.addEventListener('submit', (evt) => {
 
 //ОТКРЫТИЕ ЗАКРЫТИЕ ПОПАП Place
 
-let popupPlace = document.querySelector('.popup__place');
+let popupPlace = document.querySelector('.popup_place');
 let plusButton = document.querySelector('.profile__add-button');
 let placeInput = document.querySelector('.popup__input_type_place');
 let linkInput = document.querySelector('.popup__input_type_link');
