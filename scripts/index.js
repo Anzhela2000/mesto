@@ -1,34 +1,52 @@
-let buttonChange = document.querySelector('.profile__button-change');
-let formElement = document.querySelector('.popup__form');
-let popup = document.querySelector('.popup');
-let closeButton = document.querySelector('.popup__close');
-let nameInput = document.querySelector('.popup__input_type_name');
-let jobInput = document.querySelector('.popup__input_type_job');
-let profileName = document.querySelector('.profile__name');
-let profileButton = document.querySelector('.profile__job');
+const buttonChange = document.querySelector('.profile__button-change');
+const formElementInfo = document.querySelector('.popup__form_profile');
+const popupInfo = document.querySelector('.popup_profile');
+const closeButton = document.querySelector('.popup__close');
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_job');
+const profileName = document.querySelector('.profile__name');
+const profileButton = document.querySelector('.profile__job');
+const popupPlace = document.querySelector('.popup_place');
+const plusButton = document.querySelector('.profile__add-button');
+const placeInput = document.querySelector('.popup__input_type_place');
+const linkInput = document.querySelector('.popup__input_type_link');
+const closeButtonPlace = document.querySelector('.popup__close_place');
+const galleryContainer = document.querySelector(".gallery");
+const template = document.querySelector("#elements");
+const formCardAdd = document.querySelector('.popup__form_place');
+const popupInputTypePlace = document.querySelector('.popup__input_type_place');
+const popupInputTypeLink = document.querySelector('.popup__input_type_link');
+const popupGallery = document.querySelector('.popup_gallery');
+const popupImage = document.querySelector('.popup__image');
+const popupText = document.querySelector('.popup__text');
+const buttonClosePopup = document.querySelector('.popup__close_gallery');
 
-function openPopup() {
-  popup.classList.add('popup_opened');
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileButton.textContent;
+function openPopup(i) {
+  i.classList.add('popup_opened');
 }
 
-function closePopup() {
-  popup.classList.remove('popup_opened');
+function closePopup(i) {
+  i.classList.remove('popup_opened');
+}
+
+function openPopupInfo() {
+  openPopup(popupInfo);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileButton.textContent;
 }
 
 function saveInfoPopup(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileButton.textContent = jobInput.value;
-  closePopup();
+  closePopup(popupInfo);
 }
 
-buttonChange.addEventListener('click', openPopup);
+buttonChange.addEventListener('click', openPopupInfo);
 
-closeButton.addEventListener('click', closePopup);
+closeButton.addEventListener('click', function () { closePopup(popupInfo) });
 
-formElement.addEventListener('submit', saveInfoPopup);
+formElementInfo.addEventListener('submit', saveInfoPopup);
 
 //5 спринт
 
@@ -59,16 +77,6 @@ const initialCards = [
   }
 ];
 
-const galleryContainer = document.querySelector(".gallery");
-const template = document.querySelector("#elements");
-const formCardAdd = document.querySelector('.popup__form_place');
-const popupInputTypePlace = document.querySelector('.popup__input_type_place');
-const popupInputTypeLink = document.querySelector('.popup__input_type_link');
-const popupGallery = document.querySelector('.popup_gallery');
-const popupImage = document.querySelector('.popup__image');
-const popupText = document.querySelector('.popup__text');
-const buttonClosePopup = document.querySelector('.popup__close_gallery')
-
 function handleDelete(evt) {
   evt.target.closest('.gallery__item').remove();
 }
@@ -80,17 +88,18 @@ function handleLike(evt) {
 function openPopupImage(name, link) {
   popupImage.src = link;
   popupText.textContent = name;
-  popupGallery.classList.add('popup_opened');
+  openPopup(popupGallery);
 }
 
 function closePopupGallery() {
-  popupGallery.classList.remove('popup_opened');
+  closePopup(popupGallery);
 }
+buttonClosePopup.addEventListener('click', closePopupGallery);
 
 //Создание галлереи
 
 const getItemElement = (name, link) => {
-  const newItemElement = template.content.cloneNode(true);
+  const newItemElement = document.querySelector("#elements").content.querySelector('.gallery__item').cloneNode(true);
   const newItemName = newItemElement.querySelector('.gallery__title').textContent = name;
   const newItemPlace = newItemElement.querySelector('.gallery__picture').src = link;
   const buttontDelete = newItemElement.querySelector('.gallery__delete');
@@ -99,45 +108,32 @@ const getItemElement = (name, link) => {
   buttontDelete.addEventListener('click', handleDelete);
   addLike.addEventListener('click', handleLike);
   galleryImage.addEventListener('click', () => { openPopupImage(name, link); });
-  buttonClosePopup.addEventListener('click', closePopupGallery);
-  galleryContainer.prepend(newItemElement);
+  return newItemElement;
+}
+
+const renderItem = (name, link) => {
+  const renderCard = getItemElement(name, link);
+  galleryContainer.prepend(renderCard);
 }
 
 initialCards.forEach((item) => {
-  getItemElement(item.name, item.link);
+  renderItem(item.name, item.link);
 })
 
 //Добавление новых карточек
 
-const renderItem = (name, link) => {
-  template.append(getItemElement(name, link));
-}
-
 formCardAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
   renderItem(popupInputTypePlace.value, popupInputTypeLink.value);
-  closePopupPlace();
+  closePopup(popupPlace);
+  formCardAdd.reset()
 });
 
 //ОТКРЫТИЕ ЗАКРЫТИЕ ПОПАП Place
 
-let popupPlace = document.querySelector('.popup_place');
-let plusButton = document.querySelector('.profile__add-button');
-let placeInput = document.querySelector('.popup__input_type_place');
-let linkInput = document.querySelector('.popup__input_type_link');
-let closeButtonPlace = document.querySelector('.popup__close_place');
+plusButton.addEventListener('click', function () { openPopup(popupPlace) });
 
-function openPopupPlace() {
-  popupPlace.classList.add('popup_opened');
-}
-
-function closePopupPlace() {
-  popupPlace.classList.remove('popup_opened');
-}
-
-plusButton.addEventListener('click', openPopupPlace);
-
-closeButtonPlace.addEventListener('click', closePopupPlace);
+closeButtonPlace.addEventListener('click', function () { closePopup(popupPlace) });
 
 
 
