@@ -1,7 +1,7 @@
-const buttonChange = document.querySelector('.profile__button-change');
+const buttonChangeProfile = document.querySelector('.profile__button-change');
 const formElementInfo = document.querySelector('.popup__form_profile');
 const popupInfo = document.querySelector('.popup_profile');
-const closeButton = document.querySelector('.popup__close');
+const closeButtonInfo = document.querySelector('.popup__close_profile');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 const profileName = document.querySelector('.profile__name');
@@ -17,9 +17,9 @@ const formCardAdd = document.querySelector('.popup__form_place');
 const popupInputTypePlace = document.querySelector('.popup__input_type_place');
 const popupInputTypeLink = document.querySelector('.popup__input_type_link');
 const popupGallery = document.querySelector('.popup_gallery');
-const popupImage = document.querySelector('.popup__image');
-const popupText = document.querySelector('.popup__text');
-const buttonClosePopup = document.querySelector('.popup__close_gallery');
+const popupGalleryImage = document.querySelector('.popup__image');
+const popupGalleryNameTitle = document.querySelector('.popup__text');
+const closeButtonPopupGallery = document.querySelector('.popup__close_gallery');
 
 function openPopup(i) {
   i.classList.add('popup_opened');
@@ -42,9 +42,9 @@ function saveInfoPopup(evt) {
   closePopup(popupInfo);
 }
 
-buttonChange.addEventListener('click', openPopupInfo);
+buttonChangeProfile.addEventListener('click', openPopupInfo);
 
-closeButton.addEventListener('click', function () { closePopup(popupInfo) });
+closeButtonInfo.addEventListener('click', function () { closePopup(popupInfo) });
 
 formElementInfo.addEventListener('submit', saveInfoPopup);
 
@@ -86,15 +86,15 @@ function handleLike(evt) {
 }
 
 function openPopupImage(name, link) {
-  popupImage.src = link;
-  popupText.textContent = name;
+  popupGalleryImage.src = link;
+  popupGalleryNameTitle.textContent = name;
   openPopup(popupGallery);
 }
 
 function closePopupGallery() {
   closePopup(popupGallery);
 }
-buttonClosePopup.addEventListener('click', closePopupGallery);
+closeButtonPopupGallery.addEventListener('click', closePopupGallery);
 
 //Создание галлереи
 
