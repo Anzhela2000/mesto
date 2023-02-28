@@ -29,6 +29,20 @@ function closePopup(i) {
   i.classList.remove('popup_opened');
 }
 
+function closePopupClickOverlay(i) {
+  if (event.target === event.currentTarget) {
+    closePopup(i);
+  };
+};
+
+document.addEventListener('keydown', function (event) {
+  if ((event.keyCode == 27)) {
+    closePopup(popupInfo);
+    closePopup(popupPlace);
+    closePopup(popupGallery);
+  }
+});
+
 function openPopupInfo() {
   openPopup(popupInfo);
   nameInput.value = profileName.textContent;
@@ -41,6 +55,8 @@ function saveInfoPopup(evt) {
   profileButton.textContent = jobInput.value;
   closePopup(popupInfo);
 }
+
+popupInfo.addEventListener('click', function () { closePopupClickOverlay(popupInfo) })
 
 buttonChangeProfile.addEventListener('click', openPopupInfo);
 
@@ -96,6 +112,8 @@ function closePopupGallery() {
 }
 closeButtonPopupGallery.addEventListener('click', closePopupGallery);
 
+popupPlace.addEventListener('click', function () { closePopupClickOverlay(popupPlace) })
+
 //Создание галлереи
 
 const getItemElement = (name, link) => {
@@ -134,6 +152,8 @@ formCardAdd.addEventListener('submit', (evt) => {
 plusButton.addEventListener('click', function () { openPopup(popupPlace) });
 
 closeButtonPlace.addEventListener('click', function () { closePopup(popupPlace) });
+
+popupGallery.addEventListener('click', function () { closePopupClickOverlay(popupGallery) })
 
 
 
