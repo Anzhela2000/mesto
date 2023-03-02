@@ -31,6 +31,7 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__input/_validation-message.css/popup__input_validation-message.css);
 @import url(../blocks/popup/__input/_error/popup__input_error.css);
+@import url(../blocks/popup/__input/_error/_message/popup__input_error_message.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__close/_gallery/popup__close_gallery.css);
 @import url(../blocks/popup/__button/popup__button.css);

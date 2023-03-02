@@ -1,7 +1,6 @@
 const buttonChangeProfile = document.querySelector('.profile__button-change');
 const formElementInfo = document.querySelector('.popup__form_profile');
 const popupInfo = document.querySelector('.popup_profile');
-const closeButtonInfo = document.querySelector('.popup__close_profile');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 const profileName = document.querySelector('.profile__name');
@@ -10,7 +9,6 @@ const popupPlace = document.querySelector('.popup_place');
 const plusButton = document.querySelector('.profile__add-button');
 const placeInput = document.querySelector('.popup__input_type_place');
 const linkInput = document.querySelector('.popup__input_type_link');
-const closeButtonPlace = document.querySelector('.popup__close_place');
 const galleryContainer = document.querySelector(".gallery");
 const template = document.querySelector("#elements");
 const formCardAdd = document.querySelector('.popup__form_place');
@@ -19,29 +17,36 @@ const popupInputTypeLink = document.querySelector('.popup__input_type_link');
 const popupGallery = document.querySelector('.popup_gallery');
 const popupGalleryImage = document.querySelector('.popup__image');
 const popupGalleryNameTitle = document.querySelector('.popup__text');
-const closeButtonPopupGallery = document.querySelector('.popup__close_gallery');
-
-function openPopup(i) {
-  i.classList.add('popup_opened');
+const buttonCloseList = document.querySelectorAll('.popup__close'); 
+ 
+function openPopup(element) {
+  element.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEsc);
 }
 
-function closePopup(i) {
-  i.classList.remove('popup_opened');
+function closePopup(element) {
+  element.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
 }
 
-function closePopupClickOverlay(i) {
+function closeByOverlay(element) {
   if (event.target === event.currentTarget) {
-    closePopup(i);
+    closePopup(element);
   };
 };
 
-document.addEventListener('keydown', function (event) {
-  if ((event.keyCode == 27)) {
-    closePopup(popupInfo);
-    closePopup(popupPlace);
-    closePopup(popupGallery);
+function closeByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
-});
+}
+
+buttonCloseList.forEach(btn => {
+  const popup = btn.closest('.popup');
+  popup.addEventListener('mousedown', () => closeByOverlay(popup));
+  btn.addEventListener('click', () => closePopup(popup)); 
+})
 
 function openPopupInfo() {
   openPopup(popupInfo);
@@ -56,42 +61,11 @@ function saveInfoPopup(evt) {
   closePopup(popupInfo);
 }
 
-popupInfo.addEventListener('click', function () { closePopupClickOverlay(popupInfo) })
-
 buttonChangeProfile.addEventListener('click', openPopupInfo);
-
-closeButtonInfo.addEventListener('click', function () { closePopup(popupInfo) });
 
 formElementInfo.addEventListener('submit', saveInfoPopup);
 
 //5 спринт
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 function handleDelete(evt) {
   evt.target.closest('.gallery__item').remove();
@@ -103,23 +77,18 @@ function handleLike(evt) {
 
 function openPopupImage(name, link) {
   popupGalleryImage.src = link;
+  popupGalleryImage.alt = name;
   popupGalleryNameTitle.textContent = name;
   openPopup(popupGallery);
 }
-
-function closePopupGallery() {
-  closePopup(popupGallery);
-}
-closeButtonPopupGallery.addEventListener('click', closePopupGallery);
-
-popupPlace.addEventListener('click', function () { closePopupClickOverlay(popupPlace) })
 
 //Создание галлереи
 
 const getItemElement = (name, link) => {
   const newItemElement = document.querySelector("#elements").content.querySelector('.gallery__item').cloneNode(true);
   const newItemName = newItemElement.querySelector('.gallery__title').textContent = name;
-  const newItemPlace = newItemElement.querySelector('.gallery__picture').src = link;
+  const newItemPlace = newItemElement.querySelector('.gallery__picture');
+  newItemPlace.src = link;
   const buttontDelete = newItemElement.querySelector('.gallery__delete');
   const addLike = newItemElement.querySelector('.gallery__button-like');
   const galleryImage = newItemElement.querySelector('.gallery__picture_click');
@@ -144,16 +113,15 @@ formCardAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
   renderItem(popupInputTypePlace.value, popupInputTypeLink.value);
   closePopup(popupPlace);
-  formCardAdd.reset()
+  formCardAdd.reset();
+  evt.submitter.classList.add('popup__button_inactive')
+  evt.submitter.disabled = true;
 });
 
 //ОТКРЫТИЕ ЗАКРЫТИЕ ПОПАП Place
 
 plusButton.addEventListener('click', function () { openPopup(popupPlace) });
 
-closeButtonPlace.addEventListener('click', function () { closePopup(popupPlace) });
-
-popupGallery.addEventListener('click', function () { closePopupClickOverlay(popupGallery) })
 
 
 
